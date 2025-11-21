@@ -1,0 +1,39 @@
+{
+  "name": "font-app",
+  "version": "1.0.0",
+  "description": "Font gallery powered by Cloudflare",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "dev:full": "pnpm build && wrangler pages dev dist --live-reload",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "deploy": "pnpm build && wrangler pages deploy dist",
+    "db:init": "wrangler d1 execute jck-font-db --local --file=./schema.sql",
+    "db:seed": "wrangler d1 execute jck-font-db --local --file=./seed.sql",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@design-system/ui": "workspace:*",
+    "hono": "^4.10.6",
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251115.0",
+    "@design-system/tsconfig": "workspace:*",
+    "@tailwindcss/vite": "^4.1.17",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react-swc": "^4.0.2",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.2",
+    "wrangler": "^4.47.0"
+  }
+}

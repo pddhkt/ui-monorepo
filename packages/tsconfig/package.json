@@ -1,0 +1,6 @@
+{
+  "name": "@design-system/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared TypeScript configurations for the monorepo"
+}
