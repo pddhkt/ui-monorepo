@@ -5,13 +5,28 @@ interface Env {
 
 export const onRequest: PagesFunction<Env> = async (context) => {
   const { DB } = context.env
+  const url = new URL(context.request.url)
+  const category = url.searchParams.get('category')
 
   try {
-    const { results } = await DB.prepare('SELECT * FROM fonts ORDER BY featured DESC, createdAt DESC LIMIT 50').all()
+    let query = 'SELECT * FROM fonts'
+    let params: string[] = []
+
+    if (category && category !== 'all') {
+      query += ' WHERE category = ?'
+      params.push(category)
+    }
+
+    query += ' ORDER BY featured DESC, createdAt DESC LIMIT 50'
+
+    const { results } = params.length > 0
+      ? await DB.prepare(query).bind(...params).all()
+      : await DB.prepare(query).all()
 
     return new Response(JSON.stringify({
       fonts: results,
-      total: results.length
+      total: results.length,
+      category: category || 'all'
     }), {
       headers: {
         'Content-Type': 'application/json',
