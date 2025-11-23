@@ -91,6 +91,64 @@ importers:
         specifier: ^4.47.0
         version: 4.50.0(@cloudflare/workers-types@4.20251121.0)
 
+  apps/design-tokens:
+    dependencies:
+      '@design-system/tokens':
+        specifier: workspace:*
+        version: link:../../packages/design-tokens
+      '@design-system/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      lucide-react:
+        specifier: ^0.468.0
+        version: 0.468.0(react@19.2.0)
+      next-themes:
+        specifier: ^0.4.4
+        version: 0.4.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react:
+        specifier: ^19.1.1
+        version: 19.2.0
+      react-dom:
+        specifier: ^19.1.1
+        version: 19.2.0(react@19.2.0)
+      sonner:
+        specifier: ^1.7.2
+        version: 1.7.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+    devDependencies:
+      '@cloudflare/vite-plugin':
+        specifier: ^1.0.9
+        version: 1.15.2(vite@7.2.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))(workerd@1.20251118.0)(wrangler@4.50.0(@cloudflare/workers-types@4.20251121.0))
+      '@cloudflare/workers-types':
+        specifier: ^4.20250102.0
+        version: 4.20251121.0
+      '@design-system/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
+      '@tailwindcss/vite':
+        specifier: ^4.1.17
+        version: 4.1.17(vite@7.2.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.2.6
+      '@types/react-dom':
+        specifier: ^19.0.4
+        version: 19.2.3(@types/react@19.2.6)
+      '@vitejs/plugin-react-swc':
+        specifier: ^4.0.2
+        version: 4.2.2(vite@7.2.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))
+      tailwindcss:
+        specifier: ^4.1.17
+        version: 4.1.17
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
+      vite:
+        specifier: ^7.1.2
+        version: 7.2.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)
+      wrangler:
+        specifier: ^4.0.2
+        version: 4.50.0(@cloudflare/workers-types@4.20251121.0)
+
   apps/font-app:
     dependencies:
       '@design-system/ui':
@@ -139,6 +197,15 @@ importers:
       wrangler:
         specifier: ^4.47.0
         version: 4.50.0(@cloudflare/workers-types@4.20251121.0)
+
+  packages/design-tokens:
+    devDependencies:
+      '@design-system/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
 
   packages/tsconfig: {}
 

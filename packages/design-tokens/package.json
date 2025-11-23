@@ -1,0 +1,22 @@
+{
+  "name": "@design-system/tokens",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "./spacing": "./src/tokens/spacing.ts",
+    "./breakpoints": "./src/tokens/breakpoints.ts",
+    "./shadows": "./src/tokens/shadows.ts",
+    "./radius": "./src/tokens/radius.ts",
+    "./opacity": "./src/tokens/opacity.ts",
+    "./typography": "./src/tokens/typography.ts",
+    "./colors": "./src/tokens/colors.ts",
+    "./tokens": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@design-system/tsconfig": "workspace:*",
+    "typescript": "^5.8.3"
+  }
+}
