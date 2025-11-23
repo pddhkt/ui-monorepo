@@ -104,6 +104,17 @@ function ThemeCompositor() {
             <p className="text-muted-foreground">
               See how your design system choices come together
             </p>
+            {/* Visual indicator showing palette colors */}
+            <div className="flex justify-center gap-2 pt-2">
+              {theme.palette.colors.map((color) => (
+                <div
+                  key={color.hex}
+                  className="w-12 h-2 rounded-full transition-all duration-300"
+                  style={{ backgroundColor: color.hex }}
+                  title={color.name}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Typography Preview */}

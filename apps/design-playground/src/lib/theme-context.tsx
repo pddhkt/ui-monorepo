@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
 import type { ColorPalette } from '@design-system/palettes/types'
 import type { FontDefinition } from '@design-system/fonts/types'
 import { palettes } from '@design-system/palettes/palettes'
@@ -73,6 +73,69 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setPreviewMode: (mode) => setTheme((prev) => ({ ...prev, previewMode: mode })),
     resetTheme: () => setTheme(getDefaultTheme()),
   }
+
+  // Effect to load and apply fonts dynamically
+  useEffect(() => {
+    const fonts = [theme.headingFont, theme.bodyFont, theme.monoFont]
+    const uniqueFonts = Array.from(new Set(fonts.map(f => f.name)))
+
+    // Load fonts from Google Fonts
+    const fontFamilies = uniqueFonts.map(name => name.replace(/ /g, '+')).join('&family=')
+    const linkId = 'dynamic-google-fonts'
+
+    // Remove existing font link if present
+    const existingLink = document.getElementById(linkId)
+    if (existingLink) {
+      existingLink.remove()
+    }
+
+    // Add new font link
+    const link = document.createElement('link')
+    link.id = linkId
+    link.rel = 'stylesheet'
+    link.href = `https://fonts.googleapis.com/css2?family=${fontFamilies}&display=swap`
+    document.head.appendChild(link)
+
+    // Apply fonts to CSS variables
+    document.documentElement.style.setProperty('--font-heading', `"${theme.headingFont.name}", sans-serif`)
+    document.documentElement.style.setProperty('--font-body', `"${theme.bodyFont.name}", sans-serif`)
+    document.documentElement.style.setProperty('--font-mono', `"${theme.monoFont.name}", monospace`)
+  }, [theme.headingFont, theme.bodyFont, theme.monoFont])
+
+  // Effect to apply color palette dynamically
+  useEffect(() => {
+    const palette = theme.palette
+
+    // Helper function to convert hex to oklch (simplified - using hex directly for now)
+    const hexToOklch = (hex: string): string => {
+      // For simplicity, we'll use the hex color directly in oklch format
+      // In a production app, you'd want proper color space conversion
+      const r = parseInt(hex.slice(1, 3), 16) / 255
+      const g = parseInt(hex.slice(3, 5), 16) / 255
+      const b = parseInt(hex.slice(5, 7), 16) / 255
+
+      // Simple lightness calculation (proper oklch conversion would be more complex)
+      const lightness = 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+      return `oklch(${lightness.toFixed(3)} 0 0)`
+    }
+
+    // Map palette colors to theme colors based on position
+    if (palette.colors.length >= 1) {
+      const color1 = palette.colors[0]?.hex || '#FFFFFF'
+      const color2 = palette.colors[1]?.hex || '#9CA3AF'
+      const color3 = palette.colors[2]?.hex || '#374151'
+
+      // Update primary and accent colors based on the palette
+      // Using the middle color as primary
+      document.documentElement.style.setProperty('--color-accent', hexToOklch(color2))
+
+      // Set custom properties that we can use in our components
+      document.documentElement.style.setProperty('--palette-color-1', color1)
+      document.documentElement.style.setProperty('--palette-color-2', color2)
+      document.documentElement.style.setProperty('--palette-color-3', color3)
+    }
+  }, [theme.palette])
 
   const value: ThemeContextType = {
     ...theme,
