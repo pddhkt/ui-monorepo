@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ThemeProvider, useTheme } from './lib/theme-context'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@design-system/ui/components/ui/card'
+import { Item, ItemContent, ItemDescription, ItemTitle } from '@design-system/ui/components/ui/item'
 import { Button } from '@design-system/ui/components/ui/button'
 import { Separator } from '@design-system/ui/components/ui/separator'
 import { Palette, Type, Ruler } from 'lucide-react'
@@ -117,16 +117,14 @@ function ThemeCompositor() {
           </div>
 
           {/* Typography Preview */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Typography Preview</CardTitle>
-              <CardDescription>
+          <Item variant="outline">
+            <ItemContent className="w-full">
+              <ItemTitle>Typography Preview</ItemTitle>
+              <ItemDescription>
                 Heading: {theme.headingFont.name} · Body: {theme.bodyFont.name} · Mono:{' '}
                 {theme.monoFont.name}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
+              </ItemDescription>
+              <div className="space-y-6 mt-4">
                 <h1 className="text-4xl font-bold">Heading 1 - {theme.headingFont.name}</h1>
                 <h2 className="text-3xl font-bold">Heading 2 - Design Systems</h2>
                 <h3 className="text-2xl font-semibold">Heading 3 - Typography Matters</h3>
@@ -144,19 +142,17 @@ function ThemeCompositor() {
                   console.log(greeting)
                 </code>
               </div>
-            </CardContent>
-          </Card>
+            </ItemContent>
+          </Item>
 
           {/* Color Preview */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Color Palette</CardTitle>
-              <CardDescription>
+          <Item variant="outline">
+            <ItemContent className="w-full">
+              <ItemTitle>Color Palette</ItemTitle>
+              <ItemDescription>
                 {theme.palette.name} - {theme.palette.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-3 gap-6">
+              </ItemDescription>
+              <div className="grid grid-cols-3 gap-6 mt-4">
                 {theme.palette.colors.map((color) => (
                   <div key={color.hex} className="space-y-3">
                     <div
@@ -170,19 +166,17 @@ function ThemeCompositor() {
                   </div>
                 ))}
               </div>
-            </CardContent>
-          </Card>
+            </ItemContent>
+          </Item>
 
           {/* Spacing Preview */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Spacing Scale</CardTitle>
-              <CardDescription>
+          <Item variant="outline">
+            <ItemContent className="w-full">
+              <ItemTitle>Spacing Scale</ItemTitle>
+              <ItemDescription>
                 Current scale: {theme.spacingScale.charAt(0).toUpperCase() + theme.spacingScale.slice(1)}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-5">
+              </ItemDescription>
+              <div className="space-y-5 mt-4">
                 <div className="flex items-center gap-4">
                   <div className="w-24 text-sm text-muted-foreground">xs (2px)</div>
                   <div className="h-2 w-2 bg-primary rounded" />
@@ -204,8 +198,8 @@ function ThemeCompositor() {
                   <div className="h-2 w-64 bg-primary rounded" />
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </ItemContent>
+          </Item>
         </div>
       </main>
     </div>
