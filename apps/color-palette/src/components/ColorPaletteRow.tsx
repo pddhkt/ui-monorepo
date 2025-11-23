@@ -1,6 +1,6 @@
 import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from '@/components/ui/item'
 import { Button } from '@design-system/ui/components/ui/button'
-import type { ColorPalette } from '@/data/palettes'
+import type { ColorPalette } from '@design-system/palettes/types'
 import { Copy, CopyCheck } from 'lucide-react'
 import { toast } from 'sonner'
 import { useState } from 'react'

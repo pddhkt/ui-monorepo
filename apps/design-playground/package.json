@@ -1,5 +1,5 @@
 {
-	"name": "color-palette",
+	"name": "design-playground",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
@@ -12,9 +12,12 @@
 		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {
+		"@design-system/fonts": "workspace:*",
 		"@design-system/palettes": "workspace:*",
+		"@design-system/tokens": "workspace:*",
 		"@design-system/ui": "workspace:*",
 		"@tailwindcss/vite": "^4.1.17",
+		"lucide-react": "^0.468.0",
 		"next-themes": "^0.4.6",
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1",

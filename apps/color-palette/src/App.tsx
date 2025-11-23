@@ -1,5 +1,5 @@
 import { ColorPaletteRow } from '@/components/ColorPaletteRow'
-import { palettes } from '@/data/palettes'
+import { palettes } from '@design-system/palettes/palettes'
 import { Toaster } from '@design-system/ui/components/ui/sonner'
 
 function App() {

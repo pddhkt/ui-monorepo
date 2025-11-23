@@ -1,0 +1,17 @@
+{
+  "name": "@design-system/palettes",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "./palettes": "./src/data/palettes.ts",
+    "./utils": "./src/utils/index.ts",
+    "./types": "./src/types/index.ts"
+  },
+  "scripts": {
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@design-system/tsconfig": "workspace:*",
+    "typescript": "^5.8.3"
+  }
+}

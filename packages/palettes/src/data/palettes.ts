@@ -1,17 +1,8 @@
-export interface ColorSwatch {
-  name: string
-  hex: string
-  description: string
-}
+import type { ColorPalette } from '../types/index.js'
 
-export interface ColorPalette {
-  id: string
-  name: string
-  description: string
-  category: string
-  colors: ColorSwatch[]
-}
-
+/**
+ * Curated color palettes for design system
+ */
 export const palettes: ColorPalette[] = [
   {
     id: 'monochrome',
@@ -60,3 +51,24 @@ export const palettes: ColorPalette[] = [
     ],
   },
 ]
+
+/**
+ * Get a palette by ID
+ */
+export function getPaletteById(id: string): ColorPalette | undefined {
+  return palettes.find((palette) => palette.id === id)
+}
+
+/**
+ * Get all palettes in a specific category
+ */
+export function getPalettesByCategory(category: string): ColorPalette[] {
+  return palettes.filter((palette) => palette.category === category)
+}
+
+/**
+ * Get all unique categories
+ */
+export function getCategories(): string[] {
+  return [...new Set(palettes.map((palette) => palette.category))]
+}
