@@ -50,12 +50,12 @@ export function FontSelector({ selectedFont, onSelect, label }: FontSelectorProp
       </div>
 
       {/* Font List */}
-      <div className="max-h-64 overflow-y-auto space-y-2 border rounded-md p-2">
+      <div className="max-h-64 overflow-y-auto space-y-3 border rounded-md p-4">
         {filteredFonts.map((font) => (
           <button
             key={font.id}
             onClick={() => onSelect(font)}
-            className={`w-full text-left p-3 rounded-md border transition-colors ${
+            className={`w-full text-left p-4 rounded-md border transition-colors ${
               selectedFont.id === font.id
                 ? 'bg-primary/10 border-primary'
                 : 'bg-card hover:bg-muted/50 border-border'

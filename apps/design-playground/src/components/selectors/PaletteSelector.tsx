@@ -49,7 +49,7 @@ export function PaletteSelector({ selectedPalette, onSelect }: PaletteSelectorPr
       </div>
 
       {/* Palette Grid */}
-      <div className="space-y-2">
+      <div className="space-y-3">
         {filteredPalettes.map((palette) => (
           <button
             key={palette.id}
@@ -74,11 +74,11 @@ export function PaletteSelector({ selectedPalette, onSelect }: PaletteSelectorPr
               </div>
 
               {/* Color Swatches */}
-              <div className="flex gap-1.5">
+              <div className="flex gap-2">
                 {palette.colors.map((color) => (
                   <div
                     key={color.hex}
-                    className="h-8 flex-1 rounded border border-border"
+                    className="h-10 flex-1 rounded border border-border"
                     style={{ backgroundColor: color.hex }}
                     title={color.name}
                   />

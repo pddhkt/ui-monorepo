@@ -37,7 +37,7 @@ export function SpacingSelector({ selectedScale, onSelect }: SpacingSelectorProp
         <p className="text-xs text-muted-foreground">Choose your preferred spacing density</p>
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-3">
         {spacingOptions.map((option) => (
           <button
             key={option.value}

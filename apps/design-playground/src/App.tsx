@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ThemeProvider, useTheme } from './lib/theme-context'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@design-system/ui/components/ui/card'
 import { Button } from '@design-system/ui/components/ui/button'
+import { Separator } from '@design-system/ui/components/ui/separator'
 import { Palette, Type, Ruler } from 'lucide-react'
 import { FontSelector } from './components/selectors/FontSelector'
 import { PaletteSelector } from './components/selectors/PaletteSelector'
@@ -65,20 +66,18 @@ function ThemeCompositor() {
                   selectedFont={theme.headingFont}
                   onSelect={theme.setHeadingFont}
                 />
-                <div className="border-t pt-4">
-                  <FontSelector
-                    label="Body Font"
-                    selectedFont={theme.bodyFont}
-                    onSelect={theme.setBodyFont}
-                  />
-                </div>
-                <div className="border-t pt-4">
-                  <FontSelector
-                    label="Monospace Font"
-                    selectedFont={theme.monoFont}
-                    onSelect={theme.setMonoFont}
-                  />
-                </div>
+                <Separator className="my-4" />
+                <FontSelector
+                  label="Body Font"
+                  selectedFont={theme.bodyFont}
+                  onSelect={theme.setBodyFont}
+                />
+                <Separator className="my-4" />
+                <FontSelector
+                  label="Monospace Font"
+                  selectedFont={theme.monoFont}
+                  onSelect={theme.setMonoFont}
+                />
               </>
             )}
 
@@ -126,18 +125,18 @@ function ThemeCompositor() {
                 {theme.monoFont.name}
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="space-y-4">
+            <CardContent>
+              <div className="space-y-6">
                 <h1 className="text-4xl font-bold">Heading 1 - {theme.headingFont.name}</h1>
                 <h2 className="text-3xl font-bold">Heading 2 - Design Systems</h2>
                 <h3 className="text-2xl font-semibold">Heading 3 - Typography Matters</h3>
                 <h4 className="text-xl font-semibold">Heading 4 - Consistent Design</h4>
-                <p className="text-base">
+                <p className="text-base leading-relaxed">
                   This is body text using {theme.bodyFont.name}. {theme.previewText} The
                   typography scale creates visual hierarchy and improves readability across your
                   design system.
                 </p>
-                <code className="block p-4 bg-muted rounded-md font-mono text-sm">
+                <code className="block p-6 bg-muted rounded-lg font-mono text-sm leading-relaxed">
                   {`// ${theme.monoFont.name}`}
                   <br />
                   const greeting = "Hello, World!"
@@ -157,11 +156,11 @@ function ThemeCompositor() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-3 gap-6">
                 {theme.palette.colors.map((color) => (
-                  <div key={color.hex} className="space-y-2">
+                  <div key={color.hex} className="space-y-3">
                     <div
-                      className="h-24 rounded-lg border-2 border-border shadow-sm"
+                      className="h-32 rounded-lg border-2 border-border shadow-sm transition-all duration-300"
                       style={{ backgroundColor: color.hex }}
                     />
                     <div className="text-center">
@@ -183,25 +182,25 @@ function ThemeCompositor() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-20 text-sm text-muted-foreground">xs (2px)</div>
+              <div className="space-y-5">
+                <div className="flex items-center gap-4">
+                  <div className="w-24 text-sm text-muted-foreground">xs (2px)</div>
                   <div className="h-2 w-2 bg-primary rounded" />
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-20 text-sm text-muted-foreground">sm (8px)</div>
+                <div className="flex items-center gap-4">
+                  <div className="w-24 text-sm text-muted-foreground">sm (8px)</div>
                   <div className="h-2 w-8 bg-primary rounded" />
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-20 text-sm text-muted-foreground">md (16px)</div>
+                <div className="flex items-center gap-4">
+                  <div className="w-24 text-sm text-muted-foreground">md (16px)</div>
                   <div className="h-2 w-16 bg-primary rounded" />
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-20 text-sm text-muted-foreground">lg (32px)</div>
+                <div className="flex items-center gap-4">
+                  <div className="w-24 text-sm text-muted-foreground">lg (32px)</div>
                   <div className="h-2 w-32 bg-primary rounded" />
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-20 text-sm text-muted-foreground">xl (64px)</div>
+                <div className="flex items-center gap-4">
+                  <div className="w-24 text-sm text-muted-foreground">xl (64px)</div>
                   <div className="h-2 w-64 bg-primary rounded" />
                 </div>
               </div>
