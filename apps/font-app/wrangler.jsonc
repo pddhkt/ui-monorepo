@@ -20,5 +20,9 @@
       "binding": "BUCKET",
       "bucket_name": "jck-font-storage"
     }
-  ]
+  ],
+
+  "dev": {
+    "inspector_port": 9233
+  }
 }

@@ -12,6 +12,9 @@
 	},
 	"observability": {
 		"enabled": true
+	},
+	"dev": {
+		"inspector_port": 9230
 	}
 	/**
 	 * Smart Placement

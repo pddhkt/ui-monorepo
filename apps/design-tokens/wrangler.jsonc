@@ -4,5 +4,8 @@
   "compatibility_date": "2025-11-15",
   "assets": {
     "not_found_handling": "single-page-application"
+  },
+  "dev": {
+    "inspector_port": 9232
   }
 }
